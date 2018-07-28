@@ -98,6 +98,101 @@ void LiquidCrystal_I2C::clear(){
 	delayMicroseconds(2000);  // this command takes a long time!
 }
 
+void LiquidCrystal_I2C::clear(uint8_t addr) {
+	_addr = addr;
+	clear();
+}
+
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, const __FlashStringHelper *s) {
+	_addr = addr;
+	print(s);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, const String & s) {
+	_addr = addr;
+	print(s);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, const char s[]) {
+	_addr = addr;
+	print(s);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, char s) {
+	_addr = addr;
+	print(s);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, unsigned char s, int d= DEC) {
+	_addr = addr;
+	print(s,d);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, int s, int d= DEC) {
+	_addr = addr;
+	print(s,d);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, unsigned int s, int d= DEC) {
+	_addr = addr;
+	print(s,d);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, long s, int d= DEC) {
+	_addr = addr;
+	print(s,d);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, unsigned long s, int d= DEC) {
+	_addr = addr;
+	print(s,d);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, double s, int d= 2) {
+	_addr = addr;
+	print(s,d);
+}
+size_t LiquidCrystal_I2C::printTo(uint8_t addr, const Printable & s) {
+	_addr = addr;
+	print(s);
+}
+
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, const __FlashStringHelper *s) {
+	_addr = addr;
+	println(s);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, const String & s) {
+	_addr = addr;
+	println(s);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, const char s[]) {
+	_addr = addr;
+	println(s);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, char s) {
+	_addr = addr;
+	println(s);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, unsigned char s, int d = DEC) {
+	_addr = addr;
+	println(s, d);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, int s, int d = DEC) {
+	_addr = addr;
+	println(s, d);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, unsigned int s, int d = DEC) {
+	_addr = addr;
+	println(s, d);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, long s, int d = DEC) {
+	_addr = addr;
+	println(s, d);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, unsigned long s, int d = DEC) {
+	_addr = addr;
+	println(s, d);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, double s, int d = 2) {
+	_addr = addr;
+	println(s, d);
+}
+size_t LiquidCrystal_I2C::printlnTo(uint8_t addr, const Printable & s) {
+	_addr = addr;
+	println(s);
+}
+
 void LiquidCrystal_I2C::home(){
 	command(LCD_RETURNHOME);  // set cursor position to zero
 	delayMicroseconds(2000);  // this command takes a long time!
@@ -195,6 +290,10 @@ void LiquidCrystal_I2C::backlight(void) {
 }
 bool LiquidCrystal_I2C::getBacklight() {
   return _backlightval == LCD_BACKLIGHT;
+}
+
+void LiquidCrystal_I2C::setAddress(uint8_t addr) {
+	_addr = addr;
 }
 
 

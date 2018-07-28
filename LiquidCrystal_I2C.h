@@ -80,6 +80,7 @@ public:
 	  * from the first position on LCD display.
 	  */
 	void clear();
+	void clear(uint8_t addr);
 
 	/**
 	 * Next print/write operation will will start from the first position on the LCD display.
@@ -136,6 +137,32 @@ public:
 	void setCursor(uint8_t, uint8_t);
 	virtual size_t write(uint8_t);
 	void command(uint8_t);
+	void setAddress(uint8_t);
+	
+	size_t printTo(uint8_t addr, const __FlashStringHelper *);
+	size_t printTo(uint8_t addr, const String &);
+	size_t printTo(uint8_t addr, const char[]);
+	size_t printTo(uint8_t addr, char);
+	size_t printTo(uint8_t addr, unsigned char, int = DEC);
+	size_t printTo(uint8_t addr, int, int = DEC);
+	size_t printTo(uint8_t addr, unsigned int, int = DEC);
+	size_t printTo(uint8_t addr, long, int = DEC);
+	size_t printTo(uint8_t addr, unsigned long, int = DEC);
+	size_t printTo(uint8_t addr, double, int = 2);
+	size_t printTo(uint8_t addr, const Printable&);
+
+	size_t printlnTo(uint8_t addr, const __FlashStringHelper *);
+	size_t printlnTo(uint8_t addr, const String &s);
+	size_t printlnTo(uint8_t addr, const char[]);
+	size_t printlnTo(uint8_t addr, char);
+	size_t printlnTo(uint8_t addr, unsigned char, int = DEC);
+	size_t printlnTo(uint8_t addr, int, int = DEC);
+	size_t printlnTo(uint8_t addr, unsigned int, int = DEC);
+	size_t printlnTo(uint8_t addr, long, int = DEC);
+	size_t printlnTo(uint8_t addr, unsigned long, int = DEC);
+	size_t printlnTo(uint8_t addr, double, int = 2);
+	size_t printlnTo(uint8_t addr, const Printable&);
+	
 
 	inline void blink_on() { blink(); }
 	inline void blink_off() { noBlink(); }
@@ -161,5 +188,5 @@ private:
 	uint8_t _charsize;
 	uint8_t _backlightval;
 };
-
+extern LiquidCrystal_I2C LCD;
 #endif // FDB_LIQUID_CRYSTAL_I2C_H
