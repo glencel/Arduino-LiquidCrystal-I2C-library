@@ -48,11 +48,11 @@ void LiquidCrystal_I2C::begin(uint8_t lcd_addr) {
 	// SEE PAGE 45/46 FOR INITIALIZATION SPECIFICATION!
 	// according to datasheet, we need at least 40ms after power rises above 2.7V
 	// before sending commands. Arduino can turn on way befer 4.5V so we'll wait 50
-	delay(50);
+	delay(1);
 
 	// Now we pull both RS and R/W low to begin commands
 	expanderWrite(_backlightval);	// reset expanderand turn backlight off (Bit 8 =1)
-	delay(1000);
+	delay(1);
 
 	//put the LCD into 4 bit mode
 	// this is according to the hitachi HD44780 datasheet
@@ -60,11 +60,11 @@ void LiquidCrystal_I2C::begin(uint8_t lcd_addr) {
 
 	// we start in 8bit mode, try to set 4 bit mode
 	write4bits(0x03 << 4);
-	delayMicroseconds(4500); // wait min 4.1ms
+	delayMicroseconds(1000); // wait min 4.1ms
 
 	// second try
 	write4bits(0x03 << 4);
-	delayMicroseconds(4500); // wait min 4.1ms
+	delayMicroseconds(1000); // wait min 4.1ms
 
 	// third go!
 	write4bits(0x03 << 4);
@@ -256,3 +256,5 @@ void LiquidCrystal_I2C::printstr(const char c[]){
 	//it's here so the user sketch doesn't have to be changed
 	print(c);
 }
+
+LiquidCrystal_I2C LCD;
